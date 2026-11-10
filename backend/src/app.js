@@ -3,6 +3,7 @@ const cors = require('cors');
 
 // Import routes
 const authRoutes = require('./routes/authRoutes');
+const productRoutes = require('./routes/productRoutes');
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.get('/api/health', (req, res) => {
 
 // Mount API Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/products', productRoutes);
 
 // 404 handler for unmatched routes
 app.use((req, res) => {
