@@ -1,15 +1,17 @@
-const { sequelize, testConnection } = require('./database');
+const mongoose = require('mongoose');
+const { connectDB } = require('./database');
 
 const run = async () => {
-  console.log('Testing PostgreSQL connection...');
-  const success = await testConnection();
+  console.log('Testing MongoDB connection...');
+  const success = await connectDB();
   if (success) {
-    console.log('🎉 Database configuration is valid and working!');
+    console.log('🎉 MongoDB configuration is valid and working!');
+    await mongoose.connection.close();
+    process.exit(0);
   } else {
-    console.log('💡 Please check your DATABASE_URL in backend/.env');
+    console.log('💡 Please check your MONGODB_URI in backend/.env');
+    process.exit(1);
   }
-  await sequelize.close();
-  process.exit(success ? 0 : 1);
 };
 
 run();

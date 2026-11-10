@@ -16,8 +16,8 @@ StockFlow is a minimal, multi-tenant SaaS inventory management platform built as
 ### Backend
 - **Runtime**: Node.js
 - **Framework**: Express.js
-- **ORM**: Sequelize v6
-- **Database**: PostgreSQL (Supabase)
+- **ODM**: Mongoose v8
+- **Database**: MongoDB (Atlas / Local)
 - **Authentication**: JWT (JSON Web Tokens) with bcrypt password hashing
 
 ---
@@ -26,12 +26,12 @@ StockFlow is a minimal, multi-tenant SaaS inventory management platform built as
 
 ```text
 stockflow/
-├── backend/               # Express REST API & Sequelize ORM
+├── backend/               # Express REST API & Mongoose ODM
 │   ├── src/
 │   │   ├── config/        # DB connection configuration
 │   │   ├── controllers/   # Request handlers (auth, products, dashboard, settings)
 │   │   ├── middleware/    # Auth, tenant isolation, error handling
-│   │   ├── models/        # Sequelize models (Organization, User, Product)
+│   │   ├── models/        # Mongoose models (Organization, User, Product)
 │   │   ├── routes/        # Express route definitions
 │   │   ├── app.js         # Express app initialization
 │   │   └── server.js      # Server bootstrapper
@@ -47,4 +47,3 @@ stockflow/
 ## 🚀 Setup & Local Development
 
 Detailed setup instructions will be updated progressively as each phase is completed.
-
