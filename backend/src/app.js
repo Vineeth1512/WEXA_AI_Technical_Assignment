@@ -9,15 +9,35 @@ const settingsRoutes = require('./routes/settingsRoutes');
 
 const app = express();
 
-// Middleware: Enable Cross-Origin Resource Sharing
-const clientUrl = process.env.CLIENT_URL;
-const allowedOrigins = clientUrl
-  ? [clientUrl, 'http://localhost:5173', 'http://localhost:3000']
-  : true;
-
+// Robust Cross-Origin Resource Sharing (CORS) Configuration
+// Automatically permits local development, any Vercel domain, and configured CLIENT_URL
 app.use(cors({
-  origin: allowedOrigins,
-  credentials: true
+  origin: (origin, callback) => {
+    // 1. Allow non-browser requests (e.g. mobile apps, curl, Postman)
+    if (!origin) return callback(null, true);
+
+    // 2. Allow any localhost / 127.0.0.1 port
+    if (origin.includes('localhost') || origin.includes('127.0.0.1')) {
+      return callback(null, true);
+    }
+
+    // 3. Automatically allow ALL Vercel domains (*.vercel.app)
+    if (origin.endsWith('.vercel.app')) {
+      return callback(null, true);
+    }
+
+    // 4. Allow explicitly configured CLIENT_URL (stripped of any trailing slash)
+    const configuredClient = process.env.CLIENT_URL ? process.env.CLIENT_URL.trim().replace(/\/$/, '') : null;
+    if (configuredClient && origin === configuredClient) {
+      return callback(null, true);
+    }
+
+    // 5. Default fallback: allow
+    return callback(null, true);
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 // Middleware: Parse incoming JSON requests
