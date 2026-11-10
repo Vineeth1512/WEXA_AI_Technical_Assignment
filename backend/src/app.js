@@ -1,6 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 
+// Import routes
+const authRoutes = require('./routes/authRoutes');
+
 const app = express();
 
 // Middleware: Enable Cross-Origin Resource Sharing
@@ -15,7 +18,7 @@ app.use(express.json());
 // Middleware: Parse URL-encoded query/body data
 app.use(express.urlencoded({ extended: true }));
 
-// Basic Health Check Endpoint
+// Health Check Endpoint
 app.get('/api/health', (req, res) => {
   res.status(200).json({
     status: 'ok',
@@ -23,6 +26,9 @@ app.get('/api/health', (req, res) => {
     timestamp: new Date().toISOString()
   });
 });
+
+// Mount API Routes
+app.use('/api/auth', authRoutes);
 
 // 404 handler for unmatched routes
 app.use((req, res) => {
@@ -42,4 +48,3 @@ app.use((err, req, res, next) => {
 });
 
 module.exports = app;
-
