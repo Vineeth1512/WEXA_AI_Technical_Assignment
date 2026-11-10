@@ -10,8 +10,13 @@ const settingsRoutes = require('./routes/settingsRoutes');
 const app = express();
 
 // Middleware: Enable Cross-Origin Resource Sharing
+const clientUrl = process.env.CLIENT_URL;
+const allowedOrigins = clientUrl
+  ? [clientUrl, 'http://localhost:5173', 'http://localhost:3000']
+  : true;
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: allowedOrigins,
   credentials: true
 }));
 
