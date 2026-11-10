@@ -67,3 +67,4 @@ const getDashboardSummary = async (req, res, next) => {
 module.exports = {
   getDashboardSummary
 };
+

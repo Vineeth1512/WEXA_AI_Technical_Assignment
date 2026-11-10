@@ -23,3 +23,4 @@ export const formatNumber = (num) => {
   if (isNaN(parsed)) return '0';
   return new Intl.NumberFormat('en-US').format(parsed);
 };
+

@@ -9,3 +9,4 @@ router.use(protect);
 router.get('/summary', getDashboardSummary);
 
 module.exports = router;
+

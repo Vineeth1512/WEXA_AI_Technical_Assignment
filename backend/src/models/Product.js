@@ -71,3 +71,4 @@ productSchema.index({ organization_id: 1, sku: 1 }, { unique: true });
 const Product = mongoose.model('Product', productSchema);
 
 module.exports = Product;
+

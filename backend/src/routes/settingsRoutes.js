@@ -11,3 +11,4 @@ router.route('/')
   .put(updateSettings);
 
 module.exports = router;
+
