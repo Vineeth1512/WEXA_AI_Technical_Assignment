@@ -14,8 +14,8 @@ StockFlow is a production-ready, minimal, multi-tenant SaaS Inventory Management
 
 | Resource | URL / Details |
 | :--- | :--- |
-| **Live Frontend Application (Vercel)** | [https://wexa-ai-technical-assignment.vercel.app](https://wexa-ai-technical-assignment.vercel.app) *(or your deployed Vercel domain)* |
-| **Live Backend API (Render)** | [https://stockflow-backend.onrender.com/api/health](https://stockflow-backend.onrender.com/api/health) |
+| **Live Frontend Application (Vercel)** | [https://frontend-sigma-three-16.vercel.app](https://frontend-sigma-three-16.vercel.app) |
+| **Live Backend API (Render)** | [https://wexa-ai-technical-assignment.onrender.com/api/health](https://wexa-ai-technical-assignment.onrender.com/api/health) |
 | **GitHub Repository** | [https://github.com/Vineeth1512/WEXA_AI_Technical_Assignment](https://github.com/Vineeth1512/WEXA_AI_Technical_Assignment) |
 | **Demo Account Email** | `demo@stockflow.io` |
 | **Demo Account Password** | `password123` |
